@@ -18,35 +18,21 @@ function App() {
   const [currentRestaurant, setCurrentRestaurant] = useState({})
   const [reviews, setReviews] = useState([])
 
-  const BASE_URL_RESTAURANT_SERVICE = "http://jumprestaurantservice-env.eba-zehpzbtd.us-east-1.elasticbeanstalk.com";
-  const BASE_URL_USER_SERVICE = "http://jumpfinalprojectusersservice-env.eba-jm5kjp4s.us-east-1.elasticbeanstalk.com";
+  const BASE_URL_RESTAURANT_SERVICE = "http://localhost:8081/api/";
+  const BASE_URL_USER_SERVICE = "http://localhost:8081/api/";
   const BASE_URL_REVIEW_SERVICE = "http://jumpfinalprojectreviews-env.eba-5yianuah.us-east-1.elasticbeanstalk.com";
 
   useEffect(()=>{
     fetchAllRestaurants();
-    fetchAllUsers();
     fetchAllReviews();
   },[])
 
   const fetchAllRestaurants = async () => {
     // try {
-    //   fetch(`${BASE_URL_RESTAURANT_SERVICE}/api/restaurants/all`)
+    //   fetch(`${BASE_URL_RESTAURANT_SERVICE}/api/book`)
     //     .then(res => res.json())
     //     .then(data => {
     //       setRestaurants(data);
-    //     });
-    // } catch (err) {
-    //   console.error("Getting error: " + err);
-    // }
-  }
-
-  const fetchAllUsers = async () => {
-    // try {
-
-    //   fetch(`${BASE_URL_USER_SERVICE}/api/users`)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       setUsers(data);
     //     });
     // } catch (err) {
     //   console.error("Getting error: " + err);
@@ -89,7 +75,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/HomePage'>
             <HomePage
               restaurants={findRestaurants.length ? findRestaurants : restaurants}
               searchRestaurants={searchRestaurants}
@@ -107,7 +93,7 @@ function App() {
               setReviews={setReviews}
               />
           </Route>
-          <Route exact path='/Login'>
+          <Route exact path='/'>
             <SignInPage
               setUsers={setUsers}
               users={users}

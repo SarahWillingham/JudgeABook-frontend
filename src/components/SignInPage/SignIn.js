@@ -21,16 +21,28 @@ function SignIn(props) {
         setPass2(e.target.value);
     }
 
-    const handleSubmitSignIn = (e) => {
+    const handleSubmitSignIn = async (e) => {
         e.preventDefault();
-        const matches = props.users.filter(user=>user.username===username);
-        matches.forEach(match => {
-            if (match.password === pass){
-                props.setCurrentUser(match);
-
-                history.push("/");
-            }
-        })
+        try{
+            fetch(`http://localhost:8081/api/authenticate`, {
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "body": JSON.stringify({
+                    username: username,
+                    password: pass,
+                })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(username)
+                    props.setCurrentUser(username)
+                })
+            history.push("/HomePage");
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     const handleSubmitSignUp = async (e) => {
@@ -38,7 +50,7 @@ function SignIn(props) {
         if (pass === pass2) {
 
             try{
-                fetch(`http://jumpfinalprojectusersservice-env.eba-jm5kjp4s.us-east-1.elasticbeanstalk.com/api/add/user`, {
+                fetch(`http://localhost:8081/api/register`, {
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json"
@@ -51,8 +63,7 @@ function SignIn(props) {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        props.setUsers({...props.users, data});
-                        props.setCurrentUser({ username: username, pass: pass });
+                        console.log(data)
                     })
                 history.push("/");
             } catch (err) {

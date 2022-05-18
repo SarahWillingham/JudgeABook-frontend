@@ -5,8 +5,8 @@ function NavBar(props){
 
             <nav className="navbar navbar-light bg-light static-top">
                 <div className="container">
-                <Link to={'/'}><img src={Header} alt="review" height = "50px"></img> Resti Review</Link>
-                <Link to={'/Login'}><i className="fa fa-user-circle fa-2x"></i>&nbsp;&nbsp;
+                <Link to={'/HomePage'}><img src={Header} alt="review" height = "50px"></img> Resti Review</Link>
+                <Link to={'/'}><i className="fa fa-user-circle fa-2x"></i>&nbsp;&nbsp;
                     {
                         props.currentUser.username
                             ? props.currentUser.username
