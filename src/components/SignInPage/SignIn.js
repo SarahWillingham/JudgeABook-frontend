@@ -37,6 +37,8 @@ function SignIn(props) {
                 .then(res => res.json())
                 .then(data => {
                     console.log(username)
+                    console.log(data)
+                    props.setJWT(data)
                     props.setCurrentUser(username)
                 })
             history.push("/HomePage");

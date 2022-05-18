@@ -12,6 +12,7 @@ import EditRestaurantView from './components/EditRestaurant/EditRestaurantView'
 function App() {
 
   const [users, setUsers] = useState();
+  const [JWT, setJWT] = useState({})
   const [currentUser, setCurrentUser] = useState({})
   const [restaurants, setRestaurants] = useState([])
   const [findRestaurants, setFindRestaurants] = useState([])
@@ -83,7 +84,9 @@ function App() {
               setCurrentRestaurant={setCurrentRestaurant}
               currentUser={currentUser}
               reviews={reviews}
-              setFindRestaurants={setFindRestaurants}/>
+              setFindRestaurants={setFindRestaurants}
+              JWT = {JWT}
+              />
           </Route>
           <Route exact path='/Restaurant'>
             <RestaurantPage
@@ -98,7 +101,8 @@ function App() {
               setUsers={setUsers}
               users={users}
               setCurrentUser={setCurrentUser}
-              currentUser={currentUser}/>
+              currentUser={currentUser}
+              setJWT = {setJWT}/>
           </Route>
           <Route exact path='/EditRestaurant'>
             <EditRestaurantView
