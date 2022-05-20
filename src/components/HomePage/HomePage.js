@@ -11,47 +11,38 @@ function HomePage(props) {
   const [currentRestaurant, setCurrentRestaurant] = useState({})
   const [reviews, setReviews] = useState([])
 
-
+console.log(props.JWT)
   const BASE_URL_RESTAURANT_SERVICE = "http://localhost:8081/api/";
   const BASE_URL_USER_SERVICE = "http://localhost:8081/api/";
   const BASE_URL_REVIEW_SERVICE = "http://jumpfinalprojectreviews-env.eba-5yianuah.us-east-1.elasticbeanstalk.com";
 
   useEffect(()=>{
     fetchAllRestaurants();
-    fetchAllReviews();
   },[])
 
   const fetchAllRestaurants = async () => {
+    await setTimeout(10000)
     try{
       fetch(`http://localhost:8081/api/book`, {
         method: 'GET',
         headers:{
         Accept: 'application/json',
                  'Content-Type': 'application/json',
-                 'Authorization': "Bearer " + props.JWT,
+                 'Authorization': "Bearer " + sessionStorage.getItem("jwt"),
          },
           
       })
           .then(res => res.json())
           .then(data => {
               console.log(data)
+              setRestaurants(data)
           })
   } catch (err) {
       console.error(err);
   }
   }
 
-  const fetchAllReviews = async () => {
-    // try {
-    //   fetch(`${BASE_URL_REVIEW_SERVICE}/api/reviews`)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       setReviews(data);
-    //     });
-    // } catch (err) {
-    //   console.error("Getting error: " + err);
-    // }
-  }
+
 
   // const searchRestaurants = (str) => {
   //   if (str) {
@@ -86,7 +77,7 @@ function HomePage(props) {
 
   return (
     <div>
-      <NavBar currentUser={props.currentUser}/>
+      <NavBar currentUser={props.currentUser} setCurrentUser = {props.setCurrentUser} setRestaurants = {props.setRestaurants} setJWT = {props.setJWT} />
       <Header
         searchRestaurants={props.searchRestaurants}
         partialSearchRestaurants={props.partialSearchRestaurants}/>

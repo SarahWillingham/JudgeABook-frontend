@@ -1,7 +1,7 @@
 import usrImg from "../../img/user.webp"
 
 function Comment(props){
-
+    console.log(props.review)
     const handleClick = (e) => {
         e.preventDefault();
         props.removeComment(props.review.id);
@@ -11,17 +11,17 @@ function Comment(props){
         <div className="card p-3 mt-2">
             <div className="row">
                 <span className="col-1  "></span>
-                <span className="col-2 d-flex">{props.review.creationDate}</span>
+                {/* <span className="col-2 d-flex">{props.review.creationDate}</span> */}
                 <span className="col-5 d-flex ml-2">Rating: {props.review.rating}</span>
             </div>
             <div className=" row ">
                 <div className="user col-1">
                     <img src={usrImg} width="50px" alt="user" className="user-img rounded-circle"></img>
-                    <small className="font-weight-bold text-primary d-flex align-items-center ml-3">{props.review.username}</small>
+                    <small className="font-weight-bold text-primary d-flex align-items-center ml-3">{props.review.user.username}</small>
                 </div>
                 <div className="user col-9">
                     <span>
-                        <small className=" d-flex font-weight-bold  ml-2 mt-1"> {props.review.comment}</small>
+                        <small className=" d-flex font-weight-bold  ml-2 mt-1"> {props.review.detail}</small>
                     </span>
                 </div>
             </div>

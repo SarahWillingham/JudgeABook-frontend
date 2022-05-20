@@ -74,7 +74,7 @@ function Card(props){
         <div className="col-md-4 mt-5">
             <div className="card booking-card">
                 <div className="view overlay">
-                    <img className="card-img-top" src={props.restaurant.imgUrl} alt={props.restaurant.name} height = "275px" width = "250px"></img>
+                    <img className="card-img-top" src={props.restaurant.image} alt={props.restaurant.name} height = "275px" width = "250px"></img>
                     <div className="mask rgba-white-slight"></div>
                 </div>
 
@@ -86,7 +86,7 @@ function Card(props){
                         &nbsp;
                         <li className="list-inline-item"><p className="text-muted">({props.numberOfReviews})</p></li>
                     </ul>
-                    <p className="mb-2">$ • {props.restaurant.category}</p>
+                    <p className="mb-2">• {props.restaurant.genre}</p>
                     <p className="card-text">{props.restaurant.description}</p>
                     <hr className="my-4"></hr>
 

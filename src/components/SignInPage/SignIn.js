@@ -21,6 +21,8 @@ function SignIn(props) {
         setPass2(e.target.value);
     }
 
+    
+
     const handleSubmitSignIn = async (e) => {
         e.preventDefault();
         try{
@@ -36,9 +38,11 @@ function SignIn(props) {
             })
                 .then(res => res.json())
                 .then(data => {
+                    
                     console.log(username)
-                    console.log(data)
-                    props.setJWT(data)
+                    console.log(data.jwt)
+                    props.setJWT(data.jwt)
+                    sessionStorage.setItem("jwt", data.jwt)
                     props.setCurrentUser(username)
                 })
             history.push("/HomePage");

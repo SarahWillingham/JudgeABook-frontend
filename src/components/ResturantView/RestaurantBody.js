@@ -9,17 +9,17 @@ function RestaurantBody(props){
 
     const [rateNumber, setRateNumber] = useState(0);
     const [fullStars, setFullStars] = useState(0);
-    const [reviews, setReviews] = useState([props.reviews])
+    const [reviews, setReviews] = useState(props.currentRestaurant.reviews)
+    console.log(reviews)
+    // useEffect(() => {
+    //     setReviews(props.currentRestaurant.reviews.filter(review => review.restaurantId === props.currentRestaurant.id))
+    // }, [props.currentRestaurant.reviews, props.currentRestaurant])
+    // useEffect(
+    //     () => {
+    //         setRateNumber(props.currentRestaurant.rating);
 
-    useEffect(() => {
-        setReviews(props.reviews.filter(review => review.restaurantId === props.currentRestaurant.id))
-    }, [props.reviews, props.currentRestaurant])
-    useEffect(
-        () => {
-            setRateNumber(props.currentRestaurant.rating);
-
-        },[props.currentRestaurant.rating]
-    )
+    //     },[props.currentRestaurant.rating]
+    // )
 
     useEffect(() =>{
         let stars;
@@ -104,7 +104,7 @@ function RestaurantBody(props){
             <div className="card card-cascade  reverse">
             <div className="view view-cascade overlay">
                 <br></br>
-                <img className="card-img-top"  width= "500px" src={props.currentRestaurant.imgUrl}
+                <img className="card-img-top"  width= "500px" src={props.currentRestaurant.image}
                 alt="Card cap"></img>
                 <div className="mask rgba-white-slight"></div>
             </div>
@@ -117,8 +117,6 @@ function RestaurantBody(props){
                 </ul>
                 <p className="card-text">{props.currentRestaurant.description}</p>
             </div>
-            <p className="ml-5">Phone Number: {props.currentRestaurant.phone}</p>
-            <p className="ml-5">Address: {props.currentRestaurant.address}</p>
             {props.currentUser.role === "ROLE_ADMIN"
                 ? <Link
                         className="btn btn-primary mx-0 mb-0"
@@ -134,13 +132,11 @@ function RestaurantBody(props){
                         <CommentHeader />
                         <hr></hr>
                         {
-                            reviews.map(review => {
+                            reviews.map((review) => {
+                                console.log(review)
                                 return (
                                     <div >
-                                        <Comment
-                                            key={review.id}
-                                            review={review}
-                                            removeComment={removeComment}/>
+                                        <Comment review = {review}/>
                                     </div>
                                 )
                             })

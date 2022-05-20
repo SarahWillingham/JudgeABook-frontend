@@ -13,7 +13,7 @@ body {
     font-weight: 700;
   }
   header{
-    background: url("../img/banner.jpg") no-repeat center center;
+    background: url("https://wallpapercave.com/wp/wp2151426.jpg") no-repeat center center;
   }
   header.masthead {
     position: relative;
@@ -32,7 +32,9 @@ body {
     left: 0;
     opacity: 0.3;
   }
-  
+  .footerColor{
+    background-color: #00fcd2;
+  }
   header.masthead h1 {
     font-size: 2rem;
   }

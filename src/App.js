@@ -13,7 +13,7 @@ function App() {
 
   const [users, setUsers] = useState();
   const [JWT, setJWT] = useState({})
-  const [currentUser, setCurrentUser] = useState({})
+  const [currentUser, setCurrentUser] = useState()
   const [restaurants, setRestaurants] = useState([])
   const [findRestaurants, setFindRestaurants] = useState([])
   const [currentRestaurant, setCurrentRestaurant] = useState({})
@@ -23,34 +23,7 @@ function App() {
   const BASE_URL_USER_SERVICE = "http://localhost:8081/api/";
   const BASE_URL_REVIEW_SERVICE = "http://jumpfinalprojectreviews-env.eba-5yianuah.us-east-1.elasticbeanstalk.com";
 
-  useEffect(()=>{
-    fetchAllRestaurants();
-    fetchAllReviews();
-  },[])
-
-  const fetchAllRestaurants = async () => {
-    // try {
-    //   fetch(`${BASE_URL_RESTAURANT_SERVICE}/api/book`)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       setRestaurants(data);
-    //     });
-    // } catch (err) {
-    //   console.error("Getting error: " + err);
-    // }
-  }
-
-  const fetchAllReviews = async () => {
-    // try {
-    //   fetch(`${BASE_URL_REVIEW_SERVICE}/api/reviews`)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       setReviews(data);
-    //     });
-    // } catch (err) {
-    //   console.error("Getting error: " + err);
-    // }
-  }
+ console.log(JWT)
 
   const searchRestaurants = (str) => {
     if (str) {
@@ -83,9 +56,12 @@ function App() {
               partialSearchRestaurants={partialSearchRestaurants}
               setCurrentRestaurant={setCurrentRestaurant}
               currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
               reviews={reviews}
               setFindRestaurants={setFindRestaurants}
               JWT = {JWT}
+              setJWT = {setJWT}
+              setRestaurants = {setRestaurants}
               />
           </Route>
           <Route exact path='/Restaurant'>
