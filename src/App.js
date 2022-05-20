@@ -67,9 +67,12 @@ function App() {
           <Route exact path='/Restaurant'>
             <RestaurantPage
               currentRestaurant={currentRestaurant}
+              setRestaurants={setRestaurants}
               currentUser={currentUser}
+              setCurrentUser = {setCurrentUser}
               reviews={reviews}
               setReviews={setReviews}
+              setJWT={setJWT}
               />
           </Route>
           <Route exact path='/'>

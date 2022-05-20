@@ -5,7 +5,7 @@ import RestaurantBody from './RestaurantBody';
 function RestaurantPage(props){
     return(
         <div>
-            <NavBar currentUser={props.currentUser}/>
+            <NavBar currentUser={props.currentUser} setJWT={props.setJWT} setCurrentUser={props.setCurrentUser} setRestaurants={props.setRestaurants}/>
             <br></br>
             <RestaurantBody
                 reviews={props.reviews}
